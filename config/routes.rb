@@ -4,9 +4,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-   root to: "challenge#index"
+   root to: "challenges#index"
   # root 'welcome#index'
-    devise_for :users
+
+    devise_for :users,
+             :controllers => { :sessions => "sessions" }
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -27,7 +29,14 @@ Rails.application.routes.draw do
   #       get 'sold'
   #     end
   #   end
-
+    resources :challenges do
+    collection do
+      get 'challenge_requests'
+      get 'challenge_ongoing'
+      get 'challenge_pending'
+      get 'challenge_completed'
+    end
+    end
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

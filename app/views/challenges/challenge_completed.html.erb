@@ -1,0 +1,20 @@
+<h1>Your Completed Challenges</h1>
+<% if @challenges.present?%>
+<table>
+		<tr>
+			<th>Challenge Name</th>
+			<th>Challenged User</th>
+			<th>Your Points</th>
+			<th>Opponent Points</th>
+			<th>Winner</th>			
+		</tr>
+	<% @challenges.each do |challenge|%>
+		<tr>
+		 <td><%= challenge.challenge_name%></td>
+		 <% challenger_name = User.find(challenge.user_id).name%>
+		 <td><%= challenger_name%></td>
+		</tr>
+	<%end%>
+<%else%>
+<h2>You have no Completed challenges</h2>
+<%end%>

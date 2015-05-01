@@ -1,0 +1,17 @@
+<h1>Pending Approvals</h1>
+<% if @challenges.present?%>
+<table>
+		<tr>
+			<th>Challenge Name</th>
+			<th>Challenged User</th>			
+		</tr>
+	<% @challenges.each do |challenge|%>
+		<tr>
+		 <td><%= challenge.challenge_name%></td>
+		 <% challenger_name = User.find(challenge.user_id).name%>
+		 <td><%= challenger_name%></td>
+		</tr>
+	<%end%>
+<%else%>
+<h2>You have no Pending Approvals</h2>
+<%end%>

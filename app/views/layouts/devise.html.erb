@@ -64,16 +64,16 @@
             <li class="active"><%= link_to "Home" , root_path %></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li class = "pull-right"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-    <div class="pull-left">
-      <div class=alert alert-danger><%= alert %></div>
-    <div>
-    <div class="container">
 
+    <div class="container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+      <hr>
 
 
     </div><!--/.container-->
