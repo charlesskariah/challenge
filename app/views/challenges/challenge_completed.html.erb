@@ -1,10 +1,10 @@
 <h1>Your Completed Challenges</h1>
 <% if @challenges.present?%>
-<table>
+<table class="table table-bordered">
 		<tr>
 			<th>Challenge Name</th>
 			<th>Challenged User</th>
-			<th>Your Points</th>
+			<th class="success">Your Points</th>
 			<th>Opponent Points</th>
 			<th>Winner</th>			
 		</tr>
@@ -13,6 +13,12 @@
 		 <td><%= challenge.challenge_name%></td>
 		 <% challenger_name = User.find(challenge.user_id).name%>
 		 <td><%= challenger_name%></td>
+		 <td class="success" ><%= challenge.current_user_points(current_user.id)%></td>
+		 <% user_ids = challenge.user_tasks.map{|x| x.user_id}%>
+		 <td><%= challenge.opponent_user_points(current_user.id) %></td>
+		 <%if challenge.winner.present? %>
+		 <td class="text-success" ><span class ="glyphicon glyphicon-ok"></span><%= challenge.winner_name %></td>
+		 <%end%>
 		</tr>
 	<%end%>
 <%else%>

@@ -1,0 +1,25 @@
+<h1>Your Challenge Questions</h1>
+<div class="alert alert-warning" role="alert"><span class = "glyphicon glyphicon-info-sign"></span>NB:Questions answered will be only counted for score calcualtion</div>
+<table class="table table-bordered">
+	<tr>
+	  <th>No:</th>
+		<th>Question</th>
+	</tr>
+	<%= form_for @user_answer do |f| %>
+		<%@questions.each_with_index do |question,index|%>
+		<tr>
+			<td><%= index + 1 %></td>
+			<td><%= question.name%></td>
+			<% answer_option = question.options %>
+			<% answer_option.each do |option| %>
+			   <td>
+			      <%= radio_button_tag(question.id, option.id) %>
+	          <%= label_tag(question.id, option.option_name) %>
+	          <%= f.hidden_field(:task_id, :value => @task_id) %>
+	       </td>
+			<%end%>
+		</tr>
+		<%end%>
+	<tr class = "pull-right"><%= f.submit "Submit Challenge", :class => "btn btn-success pull-right" %></tr>
+	<% end %>
+</table>

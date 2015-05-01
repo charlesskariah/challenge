@@ -35,8 +35,15 @@ Rails.application.routes.draw do
       get 'challenge_ongoing'
       get 'challenge_pending'
       get 'challenge_completed'
+      get 'accept'
+      get 'start'
+      post 'start'
+      get 'submit_challenge'
+      post 'submit_challenge'
     end
     end
+
+    resources :user_answers
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
