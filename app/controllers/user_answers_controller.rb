@@ -17,6 +17,7 @@ class UserAnswersController < ApplicationController
 		end
 		calculate_score(question_hash,question_ids,task_id)
 		check_for_winner(task_id)
+		flash[:notice] = "You Have Successfully completed the Challenge."
 	end
 	def calculate_score(question_hash,question_ids,task_id)
 		score = 0
@@ -29,7 +30,13 @@ class UserAnswersController < ApplicationController
 				end
 			end
 		end
-		UserTask.where("task_id IN (?) AND user_id IN (?)", task_id, current_user.id).first.update_columns(points: score)		
+		UserTask.where("task_id IN (?) AND user_id IN (?)", task_id, current_user.id).first.update_columns(points: score)
+		if current_user.total_points.present?
+			new_total = current_user.total_points + score
+		else
+			new_total = score
+		end
+		current_user.update_columns(total_points: new_total)
 	end
 
 	def check_for_winner(task_id)
@@ -42,6 +49,7 @@ class UserAnswersController < ApplicationController
 	    else
 	    	Task.find(task_id).update_columns(winner: user_data.first.user_id, status: "completed")
       end
+      redirect_to challenge_completed_challenges_path
     end					    	
 	end
 

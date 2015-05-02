@@ -1,15 +1,17 @@
 <h1>Pending Approvals</h1>
 <% if @challenges.present?%>
-<table>
+<table class="table table-bordered">
 		<tr>
 			<th>Challenge Name</th>
-			<th>Challenged User</th>			
+			<th>Challenged User</th>
+			<th class="info">Status</th>	
 		</tr>
 	<% @challenges.each do |challenge|%>
 		<tr>
 		 <td><%= challenge.challenge_name%></td>
 		 <% challenger_name = User.find(challenge.user_id).name%>
 		 <td><%= challenger_name%></td>
+		 <td class="info"><%= challenge.status%></td>
 		</tr>
 	<%end%>
 <%else%>

@@ -40,10 +40,13 @@ Rails.application.routes.draw do
       post 'start'
       get 'submit_challenge'
       post 'submit_challenge'
+      get 'leaderboard'
     end
     end
 
     resources :user_answers
+
+    resources :messages
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

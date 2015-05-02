@@ -1,11 +1,12 @@
 <h1>Your Challenge Questions</h1>
-<div class="alert alert-warning" role="alert"><span class = "glyphicon glyphicon-info-sign"></span>NB:Questions answered will be only counted for score calcualtion</div>
+<div class="alert alert-warning text-center" role="alert"><span class = "glyphicon glyphicon-info-sign"></span>NB:Questions answered will be only counted for score calcualtion</div>
+<%= form_for @user_answer do |f| %>
+<div class ="alert alert-info text-center"><span class = "glyphicon glyphicon-time"></span>Start Time - <%= @start_time%></div>
 <table class="table table-bordered">
 	<tr>
 	  <th>No:</th>
 		<th>Question</th>
 	</tr>
-	<%= form_for @user_answer do |f| %>
 		<%@questions.each_with_index do |question,index|%>
 		<tr>
 			<td><%= index + 1 %></td>

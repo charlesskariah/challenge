@@ -1,0 +1,16 @@
+<h1> LeaderBoard </h1>
+<ul class="list-group">
+<% @users.each_with_index do |user,index|%>
+	<%if user == current_user%>
+	  <li class="list-group-item">
+	    <span class="badge"><%=user.total_points%></span>
+	    <%= index+1%>)<%= user.name%>-<span class ="glyphicon glyphicon-user"></span>
+	  </li>
+	<%else%>
+	  <li class="list-group-item">
+	    <span class="badge"><%=user.total_points%></span>
+	    <%= index+1%>)<%= user.name%>
+	  </li>
+	<%end%>
+ <%end%>
+</ul>

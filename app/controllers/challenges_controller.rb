@@ -3,6 +3,10 @@ class ChallengesController < ApplicationController
 
   def index
   	@online_users = User.online_users(current_user)
+    @request_count = challenge_requests.count
+    @challenge_ongoing = challenge_ongoing.count
+    @challenge_completed = challenge_completed.count
+    @challenge_pending = challenge_pending.count
   end
 
   def new
@@ -45,9 +49,14 @@ class ChallengesController < ApplicationController
     if user_task.first.start_time.nil?    
       user_task.first.update_columns(start_time: Time.now)
     end
+    @start_time = user_task.first.start_time.to_time
     question_ids = Task.find(@task_id).question_array.map(&:to_i)
     @questions = Question.find(question_ids)
     @user_answer = UserAnswer.new
+  end
+
+  def leaderboard
+    @users = User.leaderboard
   end
 
 

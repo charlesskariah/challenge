@@ -1,0 +1,12 @@
+<% if @online_users.present?%>
+<ul class="list-group">
+<% @online_users.each do |user|%>
+  <li class="list-group-item">
+    <span class="badge"><%= link_to "Send Message",{:controller => "messages", :action => "create", :recepient_id => user.id }, method: :post,  :class => " btn-success"%></span>
+  <%= user.name%>
+  </li>
+  <% end %>
+</ul>
+<%else%>
+<h2>No oNLINE uSERS </h2>
+<%end%>
