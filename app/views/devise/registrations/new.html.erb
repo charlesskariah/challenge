@@ -1,34 +1,59 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :class => "form-horizontal") do |f| %>
   <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <fieldset>
+    <div id="legend">
+      <legend class="">Register</legend>
+      <div class="pull-right">
+        <%- if controller_name != 'sessions' %>
+          <%= link_to "Log in", new_session_path(resource_name),:class => "btn btn-success"  %>
+        <% end -%>
+      </div>
+    </div>
+    <div class="control-group">
+      <!-- Username -->
+      <label class="control-label"  for="username">Username</label>
+      <div class="controls">
+        <%= f.text_field :name, autofocus: true, :class =>"input-xlarge"  %>
+        <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="email">E-mail</label>
+      <div class="controls">
+        <%= f.email_field :email, :class => "input-xlarge" %>
+        <p class="help-block">Please provide your E-mail</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Password-->
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+         <%= f.password_field :password, autocomplete: "off", :class => "input-xlarge" %>
+        <p class="help-block">
+          <% if @validatable %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+        </p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Password -->
+      <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+      <div class="controls">
+        <%= f.password_field :password_confirmation, autocomplete: "off", :class => "input-xlarge" %>
+        <p class="help-block">Please confirm password</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <%= f.submit "Register", :class => "btn btn-success" %>
+      </div>
+    </div>
+  </fieldset>
+<%end%>

@@ -1,20 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Challenge</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-   <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-
-<%= yield %>
-
-</body>
-</html>
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -58,19 +41,18 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><%= link_to "Home" , root_path %></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li id = "tab1" class="active"><%= link_to "Home" , root_path %></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-
+    <div class="pull-left">
+      <div class=alert alert-danger></div>
+    <div>
     <div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
-      <hr>
+    <%= yield%>
+
 
 
     </div><!--/.container-->

@@ -19,6 +19,7 @@ class UserAnswersController < ApplicationController
 		check_for_winner(task_id)
 		flash[:notice] = "You Have Successfully completed the Challenge."
 	end
+	
 	def calculate_score(question_hash,question_ids,task_id)
 		score = 0
 		question_ids.each do |question_id|
