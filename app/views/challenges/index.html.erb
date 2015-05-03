@@ -4,29 +4,29 @@
           <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
-          <div class="jumbotron">
+          <div class="jumbotron ">
             <h1>Challenge For You</h1>
-            <p>Challenge the online users and answer the 10 simple questions simultaneously.Who is going to be the winner?.Be there at the the top of the leaderboard</p>
+            <p><i>Challenge the online users and answer the 10 simple questions simultaneously.Who is going to be the winner?.Be there at the the top of the leaderboard.</i></p>
           </div>
           <div class="row">
             <div class="col-xs-6 col-lg-4">
               <h2>Users Challenge Requests </h2>
-              <p>You can see the challenge requests of the users here.It's u decide to accept it or not ? </p>
+              <p class="text-success">You can see the challenge requests of the users here.It's u decide to accept it or not ? </p>
               <p class ="btn btn-success"><%= link_to "View Requests ",challenge_requests_challenges_path%><span class="badge"><%=@request_count%></span></p>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4">
-              <h2>On going  Challenges</h2>
-              <p>You can see the challenges which is already started by you.The timer is running up..</p>
+              <h2 class="text-warning">On going  Challenges</h2>
+              <p class="text-success">You can see the challenges which is already started by you.The timer is running up..</p>
               <p class ="btn btn-success"><%= link_to "Ongoing Challenges",challenge_ongoing_challenges_path%><span class="badge"><%=@challenge_ongoing%></span></p>
             </div><!--/.col-xs-6.col-lg-4-->
             <div class="col-xs-6 col-lg-4">
               <h2>Completed Challenges</h2>
-              <p>You can see the completed challenges here and the winners of the challenges </p>
+              <p class="text-success">You can see the completed challenges here and the winners of the challenges </p>
               <p class ="btn btn-success"><%= link_to "View Completed",challenge_completed_challenges_path%><span class="badge"><%=@challenge_completed%></span></p>
             </div>
             <div class="col-xs-6 col-lg-4">
               <h2>Pending Challenges</h2>
-              <p>You can see the pending challenges which you have already challenged </p>
+              <p class="text-success">You can see the pending challenges which you have already challenged </p>
               <p class ="btn btn-success"><%= link_to "Pending Approvals",challenge_pending_challenges_path%><span class="badge"><%=@challenge_pending%></span></p>
             </div><!--/.col-xs-6.col-lg-4-->
              <!--/.col-xs-6.col-lg-4-->
