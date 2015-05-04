@@ -2,10 +2,11 @@ class ChallengesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    current_user.update_columns(status: true)
     if current_user.total_points.nil?
       current_user.update_columns(total_points: 0)
     end
-  	@online_users = User.online_users(current_user)
+    @online_users = User.online_users(current_user)
     @request_count = challenge_requests.count
     @challenge_ongoing = challenge_ongoing.count
     @challenge_completed = challenge_completed.count
